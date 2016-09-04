@@ -12,15 +12,26 @@
         <input type="submit" name="additem" value="Add">
       </form>
     </section>
-    <!-- <h1>Hello World!</h1> -->
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    <!-- We are using node <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>. -->
+    <div class="container">
+      <table id="myTable" border="1">
+        <tr>
+          <td>
+            Item ID
+          </td>
+          <td>
+            Item name
+          </td>
+          <td>
+            Price
+          </td>
+        </tr>
+      </table>
+    </div>
   </body>
 
   <script>
     // You can also require other files to run in this process
     require('./renderer.js')
   </script>
+  <script src="./js/menuscript.js"></script>
 </html>
