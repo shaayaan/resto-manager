@@ -81,7 +81,7 @@ let template = [{
     }
   }, {
     label: 'ODT',
-    accelerator: 'Shift+CmdOrCtrl+Z',
+    accelerator: 'F2',
     role: 'ODT',
     click: function(){
     mainWindow.webContents.openDevTools()
