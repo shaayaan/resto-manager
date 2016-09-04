@@ -6,10 +6,11 @@
   </head>
   <body>
     <section>
-      <form method="POST" action="login.php">
-        <input type="text" name="item">
-        <input type="number" name="quantity">
-        <input type="submit" name="additem" value="Add">
+      <form method="post">
+        <input type="text" id="item_code" placeholder="item_code" autofocus="autofocus">
+        <input type="text" id="name" placeholder="Item name">
+        <input type="number" id="price" placeholder="Price">
+        <button name="additem" onclick="addtomenu();">Add to menu </button>
       </form>
     </section>
     <div class="container">
