@@ -4,7 +4,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'resto'
+  database : 'resto-man-db'
 });
 
 // estabilises connection from sql
