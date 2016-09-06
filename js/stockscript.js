@@ -26,7 +26,7 @@ printtable();
 
 function printtable(){
   // calls query
-  connection.query('SELECT * FROM menu',function(err,rows){
+  connection.query('SELECT * FROM stock',function(err,rows){
     if(err) throw err;
   // Fetch to console
     console.log('Data received from Db:\n');
@@ -42,23 +42,27 @@ function printtable(){
       var cell2 = row.insertCell(1);
       var cell3 = row.insertCell(2);
       var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
+      var cell6 = row.insertCell(5);
       // Add some text to the new cells:
-      cell1.innerHTML = json[i].item_code;
+      cell1.innerHTML = json[i].stock_code;
       cell2.innerHTML = json[i].name;
-      cell3.innerHTML = json[i].price;
-      cell4.innerHTML = json[i].item_code;
-      cell4.onclick = function(){delMenuItem(this.innerHTML)};
+      cell3.innerHTML = json[i].category;
+      cell4.innerHTML = json[i].price;
+      cell5.innerHTML = json[i].quant;
+      cell6.innerHTML = json[i].stock_code;
+      cell6.onclick = function(){delStockItem(this.innerHTML)};
     }
     return;
   });
 }
 
 // delete item from database
-function delMenuItem(index){
+function delStockItem(index){
   estcon();
   console.log(index + 'Deleted');
   connection.query(
-    'DELETE FROM menu WHERE item_code = ?',
+    'DELETE FROM stock WHERE stock_code = ?',
     index,
     function (err, result) {
       if (err) throw err;
@@ -69,16 +73,19 @@ window.location.reload();
   return;
 }
 
-// Add a new item to menu
-function addtomenu(){
+// Add a new item to stock
+function addtostock(){
   //Estabilish connection
   estcon();
   // get values from form
-  var vitem_code = document.getElementById("item_code").value;
+  var vstock_code = document.getElementById("stock_code").value;
   var vname = document.getElementById("name").value;
+  var vcat = document.getElementById("category").value;
   var vprice = document.getElementById("price").value;
-  var itementry = { item_code: vitem_code, name: vname, price: vprice };
-  var q = connection.query('INSERT INTO menu SET ?', itementry, function(err,res){
+  var vquant = document.getElementById("quant").value;
+  var itementry = { stock_code: vstock_code, name: vname, category: vcat, price: vprice, quant: vquant };
+  var updateitem = { stock_code: vstock_code, price: vprice, quant: vquant};
+  var q = connection.query('INSERT INTO stock SET ? ON DUPLICATE KEY UPDATE ?', [itementry, updateitem], function(err,res){
   if(err) throw err;
     console.log('Last insert ID:', res.insertId);
     printtable();

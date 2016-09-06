@@ -5,25 +5,41 @@
     <title>Restaurant Management</title>
   </head>
   <body>
+    <div class="windowHeading">
+      Stock
+    </div>
     <section>
       <form method="post">
-        <input type="text" id="item_code" placeholder="item_code" autofocus="autofocus">
+        <input type="text" id="stock_code" placeholder="stock_code" autofocus="autofocus">
         <input type="text" id="name" placeholder="Item name">
+        <select id = "category">
+           <option value="General">General</option>
+           <option value="Packed">Packed</option>
+           <option value="Drinks">Drinks</option>
+           <option value="Others">Others</option>
+        </select>
         <input type="number" id="price" placeholder="Price">
-        <button name="additem" onclick="addtomenu();">Add to menu </button>
+        <input type="number" id="quant" placeholder="quant">
+        <button name="addstock" onclick="addtostock();">Add to stock </button>
       </form>
     </section>
     <div class="container">
       <table id="myTable" border="1">
         <tr>
           <td>
-            Item ID
+            Stock ID
           </td>
           <td>
             Item name
           </td>
           <td>
+            Category
+          </td>
+          <td>
             Price
+          </td>
+          <td>
+            Quantity
           </td>
           <td>
             X
@@ -37,5 +53,5 @@
     // You can also require other files to run in this process
     require('./renderer.js')
   </script>
-  <script src="./js/menuscript.js"></script>
+  <script src="./js/stockscript.js"></script>
 </html>

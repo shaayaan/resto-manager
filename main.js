@@ -15,7 +15,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/menu.html`)
+  mainWindow.loadURL(`file://${__dirname}/stock.html`)
 
   // Open the DevTools.
   //mainWindow.webContents.openDevTools()
@@ -62,6 +62,34 @@ app.on('activate', function () {
 
 // Populate menu with items
 let template = [{
+  label: 'Order',
+  accelerator: 'F1',
+  role: '',
+  click: function(){
+    mainWindow.loadURL(`file://${__dirname}/neworder.html`)
+  }
+},{
+  label: 'Bills',
+  accelerator: 'F2',
+  role: '',
+  click: function(){
+    mainWindow.loadURL(`file://${__dirname}/bill.html`)
+  }
+},{
+  label: 'Menu',
+  accelerator: 'F3',
+  role: '',
+  click: function(){
+    mainWindow.loadURL(`file://${__dirname}/menu.html`)
+  }
+},{
+  label: 'Stock',
+  accelerator: 'F4',
+  role: '',
+  click: function(){
+    mainWindow.loadURL(`file://${__dirname}/stock.html`)
+  }
+},{
   label: 'Window',
   submenu: [{
     label: 'New Order',
@@ -81,7 +109,7 @@ let template = [{
     }
   }, {
     label: 'ODT',
-    accelerator: 'F2',
+    accelerator: 'F11',
     role: 'ODT',
     click: function(){
     mainWindow.webContents.openDevTools()
