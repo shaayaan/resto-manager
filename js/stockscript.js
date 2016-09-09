@@ -75,9 +75,9 @@ var options;
         ,
           function (conn, callback){
             connection = conn;
-            connection.query('SELECT name FROM stock', function(err, r){
+            connection.query('SELECT name FROM menu', function(err, r){
               rows = r;
-              console.log('3');
+              console.log('3'); 
             var mylist = [];
             for(var i in rows)
               mylist.push([rows[i].name]);

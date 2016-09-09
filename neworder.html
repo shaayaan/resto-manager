@@ -3,10 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <title>Restaurant Management</title>
+    <link rel="stylesheet" href="./css/awesomplete.css" />
   </head>
   <body>
     <section>
-        <input type="text" id="name" placeholder="Item Name" autofocus="autofocus">
+        <input type="text" id="name" placeholder="Item Name" class="awesomplete" list="namelist" autofocus="autofocus"/>
+        <datalist id="namelist">
+        </datalist>
         <input type="text" id="quantity" placeholder="Quantity">
         <button name="additem" onclick="addtomenu();">Add to cart</button>
     </section>
@@ -38,4 +41,5 @@
     require('./renderer.js')
   </script>
   <script src="js/orders.js"></script>
+  <script src="./js/awesomplete.js" async></script>
 </html>
