@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Restaurant Management</title>
+  </head>
+  <body>
+
+    <div class="container" style="float:right; padding-right:10%">
+      Orders for bill #<span id='bns'></span>:
+      <table id="orderTable" border="1">
+        <tr>
+          <td>
+            Order No.
+          </td>
+          <td>
+            Name
+          </td>
+          <td>
+            Quantity
+          </td>
+          <td>
+            Price
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="container">
+      Bills:
+      <table id="myTable" border="1">
+        <tr>
+          <td>
+            Bill No.
+          </td>
+          <td>
+            Price
+          </td>
+          <td>
+            Date
+          </td>
+          <td>
+            Time
+          </td>
+        </tr>
+      </table>
+    </div>
+
+<br><br>
+    <div class="sbill">
+      Selective Bills:
+      <input type="date" id="startdate">
+      <input type="date" id="stopdate">
+      <select id = "category">
+         <option value="All">All</option>
+         <option value="Maggi">Maggi</option>
+         <option value="Rolls">Rolls</option>
+         <option value="Packed">Packed</option>
+         <option value="Others">Others</option>
+      </select>
+      <button type="button" name="getsbill" onclick="gsbill()">Go</button>
+      <table id="stable" border="1">
+        <tr>
+          <td>
+            Bill No.
+          </td>
+          <td>
+            <span id="col2"></span>
+          </td>
+          <td>
+            <span id="col3"></span>
+          </td>
+          <td>
+            <span id="col4"></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+</body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+  <script src="js/bill.js"></script>
+</html>

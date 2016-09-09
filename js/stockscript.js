@@ -2,11 +2,6 @@ var async = require('async');
 //Estabilish connection to database
 var connection;
 var options;
-// estcre();
-// estcon();
-// printtable();
-// stoque();
-// test();
     async.waterfall([
         function (callback){
             var mysql      = require('mysql');
@@ -60,8 +55,9 @@ var options;
               cell3.innerHTML = json[i].category;
               cell4.innerHTML = json[i].price;
               cell5.innerHTML = json[i].quant;
-              cell6.innerHTML = json[i].stock_code;
-              cell6.onclick = function(){delStockItem(this.innerHTML)};
+              cell6.value = json[i].stock_code;
+              cell6.innerHTML = "x";
+              cell6.onclick = function(){delStockItem(this.value)};
               }
               console.log('2.5');
               console.log('second'+connection);
@@ -111,17 +107,6 @@ var options;
         console.log(success);
 
     });
-    // test();
-    // function test(){
-    //   alert("yo");
-    //   document.getElementById('namelist').innerHTML = "uno<option>Aata</option>	<option>parle g</option>	<option>bachcha</option>"	;
-    //
-    // }
-    // //function to Estabilish connection to database
-// function estcre(){
-//
-// }
-//
 // // estabilises connection from sql
 function estcon(){
   var mysql      = require('mysql');
@@ -140,40 +125,7 @@ function estcon(){
   });
 
 }
-//
-// //
-// function stoque(){
-// }
-//
-// //
-// function test(){
-// }
 
-// prints table
-// function printtable(){
-  // calls query
-
-  // connection.query('SELECT name FROM stock',function(err,rows){
-  //   if(err) throw err;
-  //   var mylist = []
-  //   for(var i in rows)
-  //     mylist.push([rows[i].name]);
-  //       options = '';
-  //       for(var i = 0; i < mylist.length; i++)
-  //         options += '<option>'+mylist[i]+'</option>	';
-  //         // while(options=='');
-  //         test(options);
-  //   });
-    // while(options==undefined);
-    // console.log('duos'+options);
-    // document.getElementById('namelist').innerHTML =options;
-  // return;
-// }
-
-// function test(t){
-//   document.getElementById('namelist').innerHTML = t;
-//   console.log('uno'+t);
-// }
 
 // delete item from database
 function delStockItem(index){

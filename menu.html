@@ -9,6 +9,12 @@
       <form method="post">
         <input type="text" id="item_code" placeholder="item_code" autofocus="autofocus">
         <input type="text" id="name" placeholder="Item name">
+        <select id = "category">
+           <option value="General">General</option>
+           <option value="Packed">Packed</option>
+           <option value="Drinks">Drinks</option>
+           <option value="Others">Others</option>
+        </select>
         <input type="number" id="price" placeholder="Price">
         <button name="additem" onclick="addtomenu();">Add to menu </button>
       </form>
@@ -23,10 +29,13 @@
             Item name
           </td>
           <td>
+            Category
+          </td>
+          <td>
             Price
           </td>
           <td>
-            X
+            Delete
           </td>
         </tr>
       </table>

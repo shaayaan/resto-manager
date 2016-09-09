@@ -42,12 +42,15 @@ function printtable(){
       var cell2 = row.insertCell(1);
       var cell3 = row.insertCell(2);
       var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
       // Add some text to the new cells:
       cell1.innerHTML = json[i].item_code;
       cell2.innerHTML = json[i].name;
-      cell3.innerHTML = json[i].price;
-      cell4.innerHTML = json[i].item_code;
-      cell4.onclick = function(){delMenuItem(this.innerHTML)};
+      cell3.innerHTML = json[i].category;
+      cell4.innerHTML = json[i].price;
+      cell5.innerHTML = "x";
+      cell5.value = json[i].item_code;
+      cell5.onclick = function(){delMenuItem(this.value)};
     }
     return;
   });
@@ -77,7 +80,8 @@ function addtomenu(){
   var vitem_code = document.getElementById("item_code").value;
   var vname = document.getElementById("name").value;
   var vprice = document.getElementById("price").value;
-  var itementry = { item_code: vitem_code, name: vname, price: vprice };
+  var vcat = document.getElementById("category").value;
+  var itementry = { item_code: vitem_code, name: vname, category: vcat, price: vprice };
   var q = connection.query('INSERT INTO menu SET ?', itementry, function(err,res){
   if(err) throw err;
     console.log('Last insert ID:', res.insertId);

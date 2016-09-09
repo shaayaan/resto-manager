@@ -9,13 +9,21 @@ const Menu = electron.Menu
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+// var NodeSession = require('node-session');
+// // init
+// session = new NodeSession({secret: 'shadab'});
+// // start session for an http request - response
+// // this will define a session property to the request object
+// var req, res, callback;
+// session.startSession(req, res, callback);
 
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
+
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/stock.html`)
+  mainWindow.loadURL(`file://${__dirname}/bill.html`)
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
