@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Restaurant Management</title>
+  </head>
+  <body>
+    <section>
+        <input type="text" id="name" placeholder="Item Name" autofocus="autofocus">
+        <input type="text" id="quantity" placeholder="Quantity">
+        <button name="additem" onclick="addtomenu();">Add to cart</button>
+    </section>
+    <div class="container">
+      <table id="order_table" border="1">
+        <tr>
+          <td>
+            Order No.
+          </td>
+          <td>
+            Name
+          </td>
+          <td>
+            Quantity
+          </td>
+          <td>
+            Price
+          </td>
+          <td>
+            X
+          </td>
+        </tr>
+      </table>
+      <button name="additem" onclick="printbill();">Confirm</button>
+    </div>
+  </body>
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+  <script src="js/orders.js"></script>
+</html>

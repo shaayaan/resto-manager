@@ -23,10 +23,10 @@ function createWindow () {
 
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/bill.html`)
+  mainWindow.loadURL(`file://${__dirname}/neworder.html`)
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -98,50 +98,47 @@ let template = [{
     mainWindow.loadURL(`file://${__dirname}/stock.html`)
   }
 },{
-  label: 'Window',
-  submenu: [{
-    label: 'New Order',
-    accelerator: 'F1',
-    role: 'undo',
-//what happens when you click menu item
-    click: function (item, focusedWindow) {
-      if (focusedWindow) {
-        const options = {
-          type: 'info',
-          title: 'Item clicked',
-          buttons: ['Ok'],
-          message: 'New Order clicked.'
-        }
-        electron.dialog.showMessageBox(focusedWindow, options, function () {})
-      }
-    }
-  }, {
+  label: 'Developer',
+   submenu: [{
+//     label: 'New Order',
+//     accelerator: 'F1',
+//     role: 'undo',
+// //what happens when you click menu item
+//     click: function (item, focusedWindow) {
+//       if (focusedWindow) {
+//         const options = {
+//           type: 'info',
+//           title: 'Item clicked',
+//           buttons: ['Ok'],
+//           message: 'New Order clicked.'
+//         }
+//         electron.dialog.showMessageBox(focusedWindow, options, function () {})
+//       }
+//     }
+//   },
+
     label: 'ODT',
     accelerator: 'F11',
     role: 'ODT',
     click: function(){
-    mainWindow.webContents.openDevTools()
-  }
-  }, {
-    type: 'separator'
-  }, {
-    label: 'Cut',
-    accelerator: 'CmdOrCtrl+X',
-    role: 'cut'
-  }, {
-    label: 'Copy',
-    accelerator: 'CmdOrCtrl+C',
-    role: 'copy'
-  }, {
-    label: 'Paste',
-    accelerator: 'CmdOrCtrl+V',
-    role: 'paste'
-  }, {
-    label: 'Select All',
-    accelerator: 'CmdOrCtrl+A',
-    role: 'selectall'
+      mainWindow.webContents.openDevTools()
+    }
   }]
-}]
+  },{
+    label:'Help',
+    submenu: [{
+      type: 'separator'
+    },{
+      label: 'F1 : New Order'
+    },{
+      label: 'F2 : Bills'
+    },{
+      label: 'F3 : Menu'
+    },{
+      label: 'F4 : Stock'
+    }
+  ]
+  }]
 
 // Some constant menu items like update and version
 function addUpdateMenuItems (items, position) {
@@ -152,25 +149,27 @@ function addUpdateMenuItems (items, position) {
     label: `Version ${version}`,
     enabled: false
   }, {
-    label: 'Checking for Update',
-    enabled: false,
-    key: 'checkingForUpdate'
-  }, {
-    label: 'Check for Update',
-    visible: false,
-    key: 'checkForUpdate',
-    click: function () {
-      require('electron').autoUpdater.checkForUpdates()
-    }
-  }, {
-    label: 'Restart and Install Update',
+    label: 'About',
     enabled: true,
-    visible: false,
-    key: 'restartToUpdate',
-    click: function () {
-      require('electron').autoUpdater.quitAndInstall()
-    }
-  }]
+    key: 'about'
+   }
+  //  , {
+  //   label: 'Check for Update',
+  //   visible: false,
+  //   key: 'checkForUpdate',
+  //   click: function () {
+  //     require('electron').autoUpdater.checkForUpdates()
+  //   }
+  // }, {
+  //   label: 'Restart and Install Update',
+  //   enabled: true,
+  //   visible: false,
+  //   key: 'restartToUpdate',
+  //   click: function () {
+  //     require('electron').autoUpdater.quitAndInstall()
+  //   }
+  // }
+  ]
 
   items.splice.apply(items, [position, 0].concat(updateItems))
 }

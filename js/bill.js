@@ -38,7 +38,6 @@ function printOrderTable(bill_no){
       table = document.getElementById("orderTable");
       while(table.rows.length > 1) {
         table.deleteRow(1);
-        console.log("");
       }
       callback(null);
     },
