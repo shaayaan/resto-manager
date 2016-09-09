@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Restaurant Management</title>
+    <link rel="stylesheet" href="./css/awesomplete.css" />
   </head>
   <body>
     <div class="windowHeading">
@@ -11,7 +12,11 @@
     <section>
       <form method="post">
         <input type="text" id="stock_code" placeholder="stock_code" autofocus="autofocus">
-        <input type="text" id="name" placeholder="Item name">
+        <!-- <input type="text" id="name" placeholder="Item name" class="awesomplete"
+       data-list="Ada, Java, JavaScript, Brainfuck, LOLCODE, Node.js, Ruby on Rails" /> -->
+       <input type="text" id="name" placeholder="Item name" class="awesomplete" list="namelist" />
+<datalist id="namelist">
+</datalist>
         <select id = "category">
            <option value="General">General</option>
            <option value="Packed">Packed</option>
@@ -53,5 +58,6 @@
     // You can also require other files to run in this process
     require('./renderer.js')
   </script>
+  <script src="./js/awesomplete.js" async></script>
   <script src="./js/stockscript.js"></script>
 </html>
