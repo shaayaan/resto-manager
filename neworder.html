@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <title>Restaurant Management</title>
     <link rel="stylesheet" href="./css/awesomplete.css" />
+    <link rel="stylesheet" href="./css/tab.css" />
   </head>
   <body>
+      <div class="" style="text-align: center;">
+        <h1>Cafe Tea Time Katta</h1>
+      </div>
     <section>
-        <input type="text" id="name" placeholder="Item Name" class="awesomplete" list="namelist" autofocus="autofocus"/>
+        <input type="text" id="name" placeholder="Item Name" class="awesomplete inputfield" list="namelist" autofocus="autofocus"/>
         <datalist id="namelist">
         </datalist>
-        <input type="text" id="quantity" placeholder="Quantity">
-        <button name="additem" onclick="addtomenu();">Add to cart</button>
+        <input type="text" id="quantity" placeholder="Quantity" class="inputfield">
+        <button name="additem" onclick="addtomenu();" class="button">Add to cart</button>
     </section>
     <div class="container">
-      <table id="order_table" border="1">
+      <table id="order_table" class="responstable">
         <tr>
           <td>
             Order No.
@@ -33,7 +37,27 @@
           </td>
         </tr>
       </table>
-      <button name="additem" onclick="printbill();">Confirm</button>
+      <button name="additem" onclick="printbill();" class="button">Confirm</button>
+      <span>Total :<span id = "totam"></span></span>
+    </div>
+    <div>
+      <h3>Previous bill details:</h3>
+      <table id="prev_bill" class="responstable" style="display:none;">
+        <tr>
+          <td>
+            Order No.
+          </td>
+          <td>
+            Name
+          </td>
+          <td>
+            Quantity
+          </td>
+          <td>
+            Price
+          </td>
+        </tr>
+      </table>
     </div>
   </body>
   <script>

@@ -36,6 +36,7 @@ async.waterfall([
                 console.log('Data received from Db (1):\n');
                 console.log(rows);
                 json = rows;
+                var sum = 0;
                 for (var i = json.length - 1; i >= 0; i--) {
                     // Find a <table> element with id="myTable":
                     var table = document.getElementById("order_table");
@@ -52,14 +53,47 @@ async.waterfall([
                     cell2.innerHTML = json[i].name;
                     cell3.innerHTML = json[i].quantity;
                     cell4.innerHTML = json[i].price;
+                    sum += json[i].price;
                     cell5.innerHTML = 'X';
                     cell5.value = json[i].order_no;
                     cell5.onclick = function() {
                         delItem(this.value)
                     };
                 }
-                callback(null, connection);
+                document.getElementById("totam").innerHTML = sum;
+                callback(null);
             });
+        },
+        function(callback){
+          connection.query('select bill_no from bill order by bill_no desc limit 1', function(err, res){
+            console.log(res[0].bill_no);
+            callback(null, res[0].bill_no);
+          });
+        },
+        function(prev_bill_no, callback){
+            document.getElementById("prev_bill").style.display = "block";
+          connection.query('SELECT * FROM orders WHERE bill_no = ?', prev_bill_no, function(err, rows) {
+              console.log('last bill det:\n');
+              console.log(rows);
+              json = rows;
+              for (var i = json.length - 1; i >= 0; i--) {
+                  // Find a <table> element with id="myTable":
+                  var table = document.getElementById("prev_bill");
+                  // Create an empty <tr> element and add it to the 1st position of the table:
+                  var row = table.insertRow(1);
+                  // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+                  var cell1 = row.insertCell(0);
+                  var cell2 = row.insertCell(1);
+                  var cell3 = row.insertCell(2);
+                  var cell4 = row.insertCell(3);
+
+                  cell1.innerHTML = i + 1;
+                  cell2.innerHTML = json[i].name;
+                  cell3.innerHTML = json[i].quantity;
+                  cell4.innerHTML = json[i].price;
+              }
+              callback(null, connection);
+          });
         }
     ], function(error, success) {
         if (error) {
@@ -130,7 +164,14 @@ function printbill() {
                 callback(null, temp, res);
             });
         },
-        function(temp, res, callback) {
+        function (temp,res, callback){
+            connection.query('select CURDATE(), CURTIME()',function(err,rt){
+                  dt = rt[0]["CURDATE()"];
+                  tt = rt[0]["CURTIME()"];
+                  callback(null, temp, res, dt, tt);
+            });
+        },
+        function(temp, res, dt, tt, callback) {
             var bno = temp;
             for (var i = 0; i < res.length; i++) {
                 var ono = res[i].order_no;
@@ -144,7 +185,8 @@ function printbill() {
                     order_no: ono,
                     name: name,
                     quantity: q,
-                    price: p
+                    price: p,
+                    date:dt
                 };
                 connection.query('INSERT INTO orders SET ?', itementry, function(err, res) {
                     console.log('entry success');
@@ -187,6 +229,34 @@ function printbill() {
           while(table.rows.length > 1){
             table.deleteRow(1);
           }
+          callback(null);
+        },
+
+        function(callback){
+          document.getElementById("prev_bill").style.display = "block";
+          connection.query('SELECT * FROM temp_orders', function(err, rows) {
+              console.log('Data received from Db (1):\n');
+              console.log(rows);
+              json = rows;
+              for (var i = json.length - 1; i >= 0; i--) {
+                  // Find a <table> element with id="myTable":
+                  var table = document.getElementById("prev_bill");
+                  // Create an empty <tr> element and add it to the 1st position of the table:
+                  var row = table.insertRow(1);
+                  // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+                  var cell1 = row.insertCell(0);
+                  var cell2 = row.insertCell(1);
+                  var cell3 = row.insertCell(2);
+                  var cell4 = row.insertCell(3);
+
+                  cell1.innerHTML = i + 1;
+                  cell2.innerHTML = json[i].name;
+                  cell3.innerHTML = json[i].quantity;
+                  cell4.innerHTML = json[i].price;
+              }
+              callback(null, connection);
+          });
+          console.log('last bill print');
           callback(null);
         },
 

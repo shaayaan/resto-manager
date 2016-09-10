@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <title>Restaurant Management</title>
+    <link rel="stylesheet" href="./css/tab.css" />
   </head>
   <body>
     <section>
       <form method="post">
-        <input type="text" id="item_code" placeholder="item_code" autofocus="autofocus">
-        <input type="text" id="name" placeholder="Item name">
-        <select id = "category">
+        <input type="text" id="item_code" placeholder="item_code" autofocus="autofocus" class="inputfield">
+        <input type="text" id="name" placeholder="Item name" class="inputfield">
+        <select id = "category" class="inputfield">
            <option value="beverages">beverages</option>
            <option value="milkshake">milkshake</option>
            <option value="juice">juice</option>
@@ -23,12 +24,12 @@
            <option value="rolls">rolls</option>
            <option value="chinese">chinese</option>
         </select>
-        <input type="number" id="price" placeholder="Price">
-        <button name="additem" onclick="addtomenu();">Add to menu </button>
+        <input type="number" id="price" placeholder="Price" class="inputfield">
+        <button name="additem" onclick="addtomenu();" class="button">Add to menu </button>
       </form>
     </section>
     <div class="container">
-      <table id="myTable" border="1">
+      <table id="myTable" class="responstable">
         <tr>
           <td>
             Item ID

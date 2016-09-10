@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Restaurant Management</title>
     <link rel="stylesheet" href="./css/awesomplete.css" />
+    <link rel="stylesheet" href="./css/tab.css" />
   </head>
   <body>
     <div class="windowHeading">
@@ -11,25 +12,25 @@
     </div>
     <section>
       <form method="post">
-        <input type="text" id="stock_code" placeholder="stock_code" autofocus="autofocus">
+        <input type="text" id="stock_code" placeholder="stock_code" autofocus="autofocus" class="inputfield">
         <!-- <input type="text" id="name" placeholder="Item name" class="awesomplete"
        data-list="Ada, Java, JavaScript, Brainfuck, LOLCODE, Node.js, Ruby on Rails" /> -->
-       <input type="text" id="name" placeholder="Item name" class="awesomplete" list="namelist" />
+       <input type="text" id="name" placeholder="Item name" class="awesomplete inputfield" list="namelist" />
 <datalist id="namelist">
 </datalist>
-        <select id = "category">
+        <select id = "category" class="inputfield">
            <option value="General">General</option>
            <option value="ready">ready</option>
            <option value="Drinks">Drinks</option>
            <option value="Others">Others</option>
         </select>
-        <input type="number" id="price" placeholder="Price">
-        <input type="number" id="quant" placeholder="quant">
-        <button name="addstock" onclick="addtostock();">Add to stock </button>
+        <input type="number" id="price" placeholder="Price" class="inputfield">
+        <input type="number" id="quant" placeholder="quant" class="inputfield">
+        <button name="addstock" onclick="addtostock();" class="button">Add to stock </button>
       </form>
     </section>
     <div class="container">
-      <table id="myTable" border="1">
+      <table id="myTable" class="responstable">
         <tr>
           <td>
             Stock ID

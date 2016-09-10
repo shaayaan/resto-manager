@@ -68,7 +68,7 @@ function printOrderTable(bill_no){
 }
 
 function printtable(json, tablename, subtype){
-
+  console.log(subtype);
       for (var i = json.length-1 ; i >= 0; i--) {
         // Find a <table> element with id="myTable":
         var table = document.getElementById(tablename);
@@ -93,6 +93,7 @@ function printtable(json, tablename, subtype){
         else if (subtype==2) {
           cell2.innerHTML = json[i].name;
           cell3.innerHTML = json[i].price;
+          cell4.innerHTML = (json[i].date).toDateString();
           document.getElementById('col2').innerHTML = "Item";
           document.getElementById('col3').innerHTML = "Price";
           document.getElementById('col4').innerHTML = "Date";
@@ -115,7 +116,7 @@ function gsbill(){
       var srd = document.getElementById('startdate').value;
       var std = document.getElementById('stopdate').value;
       var cat = document.getElementById('category').value;
-      if(cat == "All"){
+      if(cat == "all"){
         connection.query('select * from bill where date between ? and ?', [srd, std], function(err, row){
           if(err) console.log("err"+err);
           printtable(row, "stable", 1);
@@ -126,6 +127,7 @@ function gsbill(){
 
          connection.query('select * from orders inner join menu on orders.name=menu.name where category= ? and bill_no in (select bill_no from bill where date between ? and ? );', [cat, srd, std], function(err, row){
            if(err) console.log("err"+err);
+           console.log("here");
            printtable(row, "stable", 2);
            callback(null);
          });
