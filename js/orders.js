@@ -231,6 +231,13 @@ function printbill() {
           }
           callback(null);
         },
+        function (callback) {
+          table = document.getElementById('prev_bill');
+          while(table.rows.length > 1){
+            table.deleteRow(1);
+          }
+          callback(null);
+        },
 
         function(callback){
           document.getElementById("prev_bill").style.display = "block";

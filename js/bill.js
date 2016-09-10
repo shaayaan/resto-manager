@@ -23,7 +23,7 @@ connection.connect(function(err){
 });
 
 // calls query
-connection.query('SELECT * FROM bill',function(err,rows){
+connection.query('SELECT * FROM bill order by bill_no desc',function(err,rows){
   if(err) throw err;
 // Fetch to console
   console.log('Data received from Db:\n');

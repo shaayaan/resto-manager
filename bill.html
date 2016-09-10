@@ -7,27 +7,10 @@
   </head>
   <body>
 
-    <div class="container" style="float:right; padding-right:10%">
-      Orders for bill #<span id='bns'></span>:
-      <table id="orderTable" class="responstable">
-        <tr>
-          <td>
-            Order No.
-          </td>
-          <td>
-            Name
-          </td>
-          <td>
-            Quantity
-          </td>
-          <td>
-            Price
-          </td>
-        </tr>
-      </table>
-    </div>
     <div class="container">
+    <h3>
       Bills:
+    </h3>
       <table id="myTable" class="responstable">
         <tr>
           <td>
@@ -45,10 +28,31 @@
         </tr>
       </table>
     </div>
+    <div class="container" style="float:right;">
+<h4>
+  Orders for bill #<span id='bns'></span>:
+</h4>
+      <table id="orderTable" class="responstable">
+        <tr>
+          <td>
+            Order No.
+          </td>
+          <td>
+            Name
+          </td>
+          <td>
+            Quantity
+          </td>
+          <td>
+            Price
+          </td>
+        </tr>
+      </table>
+    </div>
 
 <br><br>
     <div class="sbill">
-      Selective Bills:
+        Selective Bills:
       <input type="date" id="startdate" class="inputfield">
       <input type="date" id="stopdate" class="inputfield">
       <select id = "category" class="inputfield">
@@ -66,7 +70,7 @@
          <option value="rolls">rolls</option>
          <option value="chinese">chinese</option>
       </select>
-      <button type="button" name="getsbill" onclick="gsbill()" class="button">Go</button>
+      <button type="button" name="getsbill" onclick="gsbill()"  class="button">Go</button>
       <table id="stable" class="responstable">
         <tr>
           <td>
